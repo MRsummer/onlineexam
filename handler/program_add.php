@@ -6,8 +6,8 @@ require_once("../helper/user.php");
 //check privilege
 User::CheckTeacher();
 
-$content = $_POST["content"];
-$answer = $_POST["answer"];
+$content = trim($_POST["content"]);
+$answer = trim($_POST["answer"]);
 $iA = $_POST["testinA"];
 $oA = $_POST["testoutA"];
 $iB = $_POST["testinB"];
@@ -25,6 +25,6 @@ $testdata = json_encode(array(
 ));
 
 Mysql::getDB()->exec("insert into program (content, answer, testdata, chapter, difficulty, tag) "
-    ."values ('$content', '$answer', '$testdata', '', 0, '' )");
+    ."values ('".addslashes($content)."', '".addslashes($answer)."', '".addslashes($testdata)."', '', 0, '' )");
 
 Uri::redirect("/view/program.html.php");

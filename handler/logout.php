@@ -9,4 +9,4 @@ unset($_SESSION["uid"]);
 unset($_SESSION["name"]);
 unset($_SESSION["num"]);
 
-Uri::redirect("/view/login.html");
+Uri::redirect("/view/login.html.php");

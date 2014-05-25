@@ -14,5 +14,5 @@ if(count($res) == 1){
 	$_SESSION["num"] = $res[0]["num"];
 	Uri::redirect("/view/index.html.php");
 }else{
-    Uri::goBack("用户名或密码错误", "/view/login.html");
+    Uri::goBack("用户名或密码错误", "/view/login.html.php");
 }

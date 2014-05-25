@@ -13,7 +13,7 @@ class User{
 
 	public static function checkLogin(){
 		if(! (isset($_SESSION["login"]) && $_SESSION["login"] == "true") ){
-			Uri::redirect("/view/login.html");
+			Uri::redirect("/view/login.html.php");
 		}
 	}
 

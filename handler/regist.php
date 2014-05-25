@@ -18,7 +18,7 @@ $res = Mysql::getDB()->query($sql);
 if(count($res) == 0){
     $sql = "insert into user (name, password, num) values ('".$name."', '".$pwd."', '".$num."')";
     Mysql::getDB()->exec($sql);
-    echo "注册成功，<a href='/view/login.html'>登录</a>";
+    echo "注册成功，<a href='/view/login.html.php.php'>登录</a>";
 }else{
     Uri::goBack("学号已经被注册了");
 }

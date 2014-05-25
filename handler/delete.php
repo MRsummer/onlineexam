@@ -13,4 +13,4 @@ if(! is_numeric($id)) Uri::goBack("该页面不存在");
 Mysql::getDB()->exec("delete from $type where id = ".addslashes($id));
 
 if($type == "paper") $type = "papers";
-Uri::redirect("/view/".$type.".html.php");
+Uri::goBack("删除成功！");
