@@ -14,11 +14,17 @@
 //        return false;
 //}
 
-$arr = array("1"=>"aaa");
-foreach($arr as $key=>$value){
-    $arr["_".$key] = "_".$value;
-}
-print_r($arr);
+//$arr = array("1"=>"aaa");
+//foreach($arr as $key=>$value){
+//    $arr["_".$key] = "_".$value;
+//}
+//print_r($arr);
+
+$cwd = getcwd();
+$lastIndex = strlen($cwd) - strlen(strrchr($cwd, "/"));
+$pwd = substr($cwd, 0, $lastIndex);
+echo $pwd;
+
 
 //echo in_array("aaa", array("a"=>"aaa", "b"=>"bbb")) ? "in" : "not";
 

@@ -1,9 +1,6 @@
 <?php
 class Judge{
-    public static function getCodeResult($testArr, &$resArr){
-        if(!is_array($resArr)){
-            throw new Exception("resArr type err, array required");
-        }
+    public static function getCodeResult($testArr){
 
         if(!is_array($testArr)){
             throw new Exception("testArr type err, array required");
@@ -16,12 +13,16 @@ class Judge{
             throw new Exception("test data type err, array required");
         }
 
+        $resArr = array();
+
         //将code写入一个c文件，注意权限
         $pid = getmypid();
-
-        $dir = getcwd()."/../run/$pid/";
+        $cwd = getcwd();
+        $lastIndex = strlen($cwd) - strlen(strrchr($cwd, "/"));
+        $pwd = substr($cwd, 0, $lastIndex);
+        $dir = $pwd."/run/$pid/";
         $cFile = "test.c";
-        system("mkdir -p ".$dir);
+        mkdir("../run/".$pid);
         file_put_contents($dir.$cFile, $code);
 
         //将测试数据写入测试文件
@@ -34,6 +35,8 @@ class Judge{
 
         //测试脚本编译程序，如果成功，运行测试数据，如果失败，返回
         system("../script/judge_c_program.sh ".$dir." test.c testin.data testout.data", $retVal);
+
+        print_r($retVal);
 
         //判断脚本的返回值，设置返回值
         if($retVal == 0){
@@ -63,6 +66,8 @@ class Judge{
         }
 
         //清除程序产生的文件
-        system("rm -rf ".$dir);
+        //system("rm -rf ".$dir);
+
+        return $resArr;
     }
 }
