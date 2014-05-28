@@ -32,6 +32,20 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="class" class="col-sm-2 control-label">班级：</label>
+        <div class="col-sm-10">
+            <input type="text" name="class" class="form-control" id="class" placeholder="班级">（例如：通信1002，电信1002）
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="teacher" class="col-sm-2 control-label">老师：</label>
+        <div class="col-sm-10">
+            <select name="teacher" id="teacher">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <a href="/view/login.html.php">去登陆</a>
         </div>
