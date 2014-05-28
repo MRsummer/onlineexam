@@ -31,14 +31,6 @@ class AppConf{
         "8"=>"文件"
         ),
 
-        //标签配置
-        "TAG"=>array(
-        "1"=>"语法",
-        "2"=>"二叉树",
-        "3"=>"链表",
-        "4"=>"文件读写"
-        )
-
     );
 
     public static function getConf(){

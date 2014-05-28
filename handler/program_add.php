@@ -24,7 +24,12 @@ $testdata = json_encode(array(
     "iD"=>$iD, "oD"=>$oD
 ));
 
+$chapter = trim($_POST["chapter"]);
+$tag = trim($_POST["tag"]);
+$difficulty = Check::inArray($_POST["difficulty"], array("1","2","3","4","5","6","7","8","9","10"));
+
 Mysql::getDB()->exec("insert into program (content, answer, testdata, chapter, difficulty, tag) "
-    ."values ('".addslashes($content)."', '".addslashes($answer)."', '".addslashes($testdata)."', '', 0, '' )");
+    ."values ('".addslashes($content)."', '".addslashes($answer)."', '".addslashes($testdata)."', '".
+    addslashes($chapter)."', ".$difficulty.", '".addslashes($tag)."' )");
 
 Uri::redirect("/view/program.html.php");

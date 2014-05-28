@@ -44,31 +44,41 @@ $res = Mysql::getDB()->query($sql);
                 输入：<input type="text" name="testinD" id="testinD" style="width: 300px;">
                 输出：<input type="text" name="testoutD" style="width: 300px;">
             </div>
+
+            <div class="form-group">
+                <label for="chapter">章节&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：</label>
+                <select name="chapter" id="chapter">
+                    <?php require_once("../conf/appconf.php"); foreach(AppConf::getConf()["CHAPTER"] as $index=>$name){ ?>
+                        <option value="<?=$name?>"><?=$name?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tag">标签&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：</label>
+                <input type="text" name="tag" id="tag" style="width:700px;">（标签以空格分开）
+            </div>
+            <div class="form-group">
+                <label for="difficulty">难读系数&nbsp;&nbsp;：</label>
+                <select name="difficulty" id="difficulty">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-default">添加</button>
         </form>
     </div>
 </div>
 
-
-<div class="panel panel-default">
-    <div class="panel-heading">编程题</div>
-    <div class="panel-body">
-        <?php foreach($res as $item){ ?>
-        <a class="list-group-item">
-            <h4 class="list-group-item-heading">题目：<?=$item["content"]?></h4>
-            <p class="list-group-item-text">题目编号：<?=$item["id"]?></p>
-            <p class="list-group-item-text">答案：
-                <textarea readonly="readonly" style="width: 800px;max-width:800px;height: 100px;">
-                    <?php echo trim($item["answer"])?>
-                </textarea>
-            </p>
-            <p class="list-group-item-text">
-                <span style="color: red;cursor: pointer;" onclick="javascript:location.href='/handler/delete.php?type=program&id=<?=$item["id"]?>'">删除此题</span>
-            </p>
-        </a>
-        <?php } ?>
-    </div>
-</div>
+<?php include("programresult.html.php"); ?>
 
 </div>
 </body>

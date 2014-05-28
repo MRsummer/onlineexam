@@ -28,7 +28,10 @@ require_once("../helper/user.php");
         <li class="<?php echo $location == "choose" ? "active" : ""; ?>"><a href="/view/choose.html.php">选择题库</a></li>
         <li class="<?php echo $location == "fill" ? "active" : ""; ?>"><a href="/view/fill.html.php">填空题库</a></li>
         <li class="<?php echo $location == "program" ? "active" : ""; ?>"><a href="/view/program.html.php">编程题库</a></li>
+        <li class="<?php echo $location == "search" ? "active" : ""; ?>"><a href="/view/search.html.php">查找题目</a></li>
         <li class="<?php echo $location == "papers" ? "active" : ""; ?>"><a href="/view/papers.html.php">试卷管理</a></li>
+        <li class="<?php echo $location == "chapter" ? "active" : ""; ?>"><a href="/view/chapter.html.php">查看章节</a></li>
+        <li class="<?php echo $location == "judge" ? "active" : ""; ?>"><a href="/view/judge.html.php">在线测试代码</a></li>
     </ul>
 </div>
 <?php } ?>
