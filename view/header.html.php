@@ -10,10 +10,10 @@ require_once("../helper/user.php");
     <span style="display: inline-block;float: right;margin-right: 30px;margin-top: 40px;">
         <h4 style="display: inline;font-size: 13px;">
             姓名：<span style="color:forestgreen;"><?=$_SESSION["name"]?></span> &nbsp;&nbsp;
-            学号：<span style="color:forestgreen;"><?=$_SESSION["num"]?></span> &nbsp;&nbsp;
+            编号：<span style="color:forestgreen;"><?=$_SESSION["num"]?></span> &nbsp;&nbsp;
             <?php
                 require_once("../helper/user.php");
-                echo User::isTeacher() ? "（老师）" : "（学生）";
+                echo User::isTeacher() ? "（老师）" : (User::isManager() ? "（管理员）" : "（学生）");
             ?>
             <a href="/handler/logout.php"  style="color:forestgreen;">退出登录</a>
         </h4>

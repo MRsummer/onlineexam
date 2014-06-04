@@ -1,4 +1,9 @@
 <?php
+require_once("../conf/appconf.php");
+require_once("../lib/require.php");
+require_once("../helper/user.php");
+
+User::checkLogin();
 $date = date("Y-m-d H:i:s");
 $results = Mysql::getDB()->query("select id, user, score, exam from result where score != 0 and user =".$_SESSION["uid"]." order by id desc");
 $currentExams = Mysql::getDB()->query("select * from exam where begintime < '".$date."' and endtime > '".$date."' ");

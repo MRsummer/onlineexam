@@ -6,8 +6,8 @@ class User{
 
 	public static function checkTeacher(){
 		self::checkLogin();
-		if(! in_array($_SESSION["num"], AppConf::getConf()["ROLE_TEACHER_MUM"]) ){
-            Uri::redirect("/view/index.html.php");
+		if(strpos($_SESSION["num"], "T") != 0){
+            Uri::redirect("/view/login.html.php");
 		}
 	}
 
@@ -17,12 +17,25 @@ class User{
 		}
 	}
 
+    public static function checkManager(){
+        self::checkLogin();
+        if(strpos($_SESSION["num"], "G") != 0){
+            Uri::redirect("/view/login.html.php");
+        }
+    }
+
     public static function isTeacher(){
-        return in_array($_SESSION["num"], AppConf::getConf()["ROLE_TEACHER_MUM"]);
+        return strpos($_SESSION["num"], "T") === 0 ;
     }
 
     public static function isManager(){
-        return in_array($_SESSION["num"], AppConf::getConf()["ROLE_MANAGER_MUM"]);
+        return strpos($_SESSION["num"], "G") === 0 ;
+    }
+
+    public static function checkTeacherPrivilege($item){
+        if(! isTeacher()) return false;
+        if(! isset($_SESSION["privilege"])) return false;
+        return isset($_SESSION["privilege"][$item]) && $_SESSION["privilege"][$item] == 1;
     }
 }
 
