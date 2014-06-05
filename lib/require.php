@@ -6,3 +6,5 @@ require_once("mysql.php");
 require_once("uri.php");
 require_once("date.php");
 require_once("check.php");
+
+require_once("../helper/user.php");

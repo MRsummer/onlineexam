@@ -32,10 +32,16 @@ class User{
         return strpos($_SESSION["num"], "G") === 0 ;
     }
 
-    public static function checkTeacherPrivilege($item){
-        if(! isTeacher()) return false;
+    public static function hasTeacherPrivilege($item){
+        if(! self::isTeacher()) return false;
         if(! isset($_SESSION["privilege"])) return false;
         return isset($_SESSION["privilege"][$item]) && $_SESSION["privilege"][$item] == 1;
+    }
+
+    public static function checkTeacherPrivilege($item){
+        if(! self::hasTeacherPrivilege($item)){
+            Uri::goBack("您暂时没有权限访问此页面");
+        }
     }
 }
 

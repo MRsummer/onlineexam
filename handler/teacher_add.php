@@ -2,6 +2,8 @@
 
 require_once("../lib/require.php");
 
+User::checkManager();
+
 $num = isset($_POST["num"]) ? trim($_POST["num"]) : "";
 $name = isset($_POST["name"]) ? trim($_POST["name"]) : "";
 $pwd = isset($_POST["pwd"]) ? trim($_POST["pwd"]) : "";
