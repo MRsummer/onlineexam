@@ -1,5 +1,5 @@
 <?php
-require_once("judge.php");
+require_once("../helper/judge.php");
 
 $code ='
 #include <stdio.h>
@@ -14,12 +14,11 @@ int main(){
 }
 ';
 
-$resArr = array();
-Judge::getCodeResult(array(
+$res = Judge::getCodeResult(array(
     "code"=>$code,
     "testDataArr"=>array(
         array("in"=>"3", "out"=>"012"),
         array("in"=>"4", "out"=>"0123")
     )
-), $resArr);
-print_r($resArr);
+));
+print_r($res);
